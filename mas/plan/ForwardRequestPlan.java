@@ -19,8 +19,10 @@ public class ForwardRequestPlan extends DefaultPlan {
         super(class1, class2);
     }
 
+    @Override
     public boolean isContextApplicable(Goal goal) {
         if (goal instanceof GetApplicationData) {
+            System.out.println("Sure, context is applicable");
             return true;
         }
         return false;

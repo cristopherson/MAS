@@ -24,7 +24,7 @@ public class ApplicationGetDataPlanBody extends BeliefGoalPlanBody {
     @Override
     protected void execute() {
         GoalEvent goalEvent = getGoalEvent();
-
+        System.out.println(ApplicationGetDataPlanBody.class);
         if (goalEvent == null) {
             return;
         } else if (!GoalStatus.ACHIEVED.equals(goalEvent.getStatus())) {

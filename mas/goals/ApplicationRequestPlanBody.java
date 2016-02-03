@@ -11,6 +11,7 @@ import bdi4jade.annotation.Parameter.Direction;
 import bdi4jade.belief.BeliefSet;
 import bdi4jade.plan.Plan.EndState;
 import bdi4jade.plan.planbody.AbstractPlanBody;
+import java.util.HashMap;
 import mas.capabilities.ApplicationCapability;
 import mas.data.ApplicationData;
 
@@ -29,7 +30,13 @@ public class ApplicationRequestPlanBody extends AbstractPlanBody {
     @Override
     public void action() {
         //Wait for communication from communication agent
-        if (applicationData != null && !applicationData.equals("")) {
+        applicationData = new ApplicationData();        
+        HashMap map = new HashMap<String, String>();
+        
+        map.put("key", "name");
+        applicationData.setData(map);
+        System.out.println(ApplicationRequestPlanBody.class);
+        if (applicationData != null && applicationData.getData()!=null) {
             setEndState(EndState.SUCCESSFUL);
         }
     }
@@ -38,5 +45,5 @@ public class ApplicationRequestPlanBody extends AbstractPlanBody {
     public void setApplicationData(ApplicationData applicationData) {
         this.applicationData = applicationData;
     }
-
+    
 }

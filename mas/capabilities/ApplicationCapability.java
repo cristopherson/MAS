@@ -12,6 +12,7 @@ import bdi4jade.belief.TransientBeliefSet;
 import bdi4jade.core.Capability;
 import bdi4jade.goal.GoalTemplateFactory;
 import bdi4jade.plan.DefaultPlan;
+import java.util.HashMap;
 import mas.data.ApplicationData;
 import mas.goals.ApplicationForwardRequestPlanBody;
 import mas.goals.ApplicationGetDataPlanBody;
@@ -43,17 +44,21 @@ public class ApplicationCapability extends Capability {
             BELIEF_EMPTY_DATA);
 
     @Belief
-    private BeliefSet<String, ApplicationData> on = new TransientBeliefSet<>(BELIEF_GET_DATA);
+    private BeliefSet<String, ApplicationData> noEmpty = new TransientBeliefSet<>(BELIEF_GET_DATA);
 
     @Plan
     private bdi4jade.plan.Plan requestData;
     
     public ApplicationCapability(){
-        this.requestData = new ForwardRequestPlan(GetApplicationData.class, ApplicationRequestPlanBody.class);
+        this.requestData = new ForwardRequestPlan(GetApplicationData.class, ApplicationForwardRequestPlanBody.class);
     }
     
     protected void setup() {
-        //Communicate with communication agents
-                       
+        //Communicate with communication agents   
+        ApplicationData data = new ApplicationData();
+        HashMap map = new HashMap<String, String>();
+        map.put("key", "name");
+        data.setData(map);
+        empty.addValue(data);
     }
 }
