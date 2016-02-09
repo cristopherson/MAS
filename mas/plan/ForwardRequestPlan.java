@@ -9,7 +9,6 @@ import bdi4jade.goal.Goal;
 import bdi4jade.goal.GoalTemplateFactory;
 import bdi4jade.plan.DefaultPlan;
 import static mas.capabilities.ApplicationCapability.BELIEF_EMPTY_DATA;
-import mas.data.ApplicationData;
 import mas.goals.GetApplicationData;
 
 /**
