@@ -12,5 +12,5 @@ package mas.request;
  */
 public enum RequestType {
     EMPLOYEE_EVENT,
-    UNKNOWN_EVENT,    
+    EXIT_EVENT,
 }
