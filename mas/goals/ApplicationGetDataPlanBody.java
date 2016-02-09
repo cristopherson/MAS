@@ -11,7 +11,7 @@ import bdi4jade.event.GoalEvent;
 import bdi4jade.goal.GoalStatus;
 import bdi4jade.plan.Plan.EndState;
 import bdi4jade.plan.planbody.BeliefGoalPlanBody;
-import mas.data.ApplicationData;
+import mas.data.ApplicationDataSet;
 
 /**
  *
@@ -19,7 +19,7 @@ import mas.data.ApplicationData;
  */
 public class ApplicationGetDataPlanBody extends BeliefGoalPlanBody {
 
-    private ApplicationData target;
+    private ApplicationDataSet target;
 
     @Override
     protected void execute() {
@@ -35,7 +35,7 @@ public class ApplicationGetDataPlanBody extends BeliefGoalPlanBody {
 
     @Parameter(direction = Direction.IN, mandatory = true)
     public void setValue(Object obj) {
-        target = new ApplicationData();
+        target = new ApplicationDataSet();
         target.setData(obj);
     }
 

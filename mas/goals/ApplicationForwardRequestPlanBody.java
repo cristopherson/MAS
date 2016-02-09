@@ -16,7 +16,7 @@ import bdi4jade.plan.planbody.AbstractPlanBody;
 import bdi4jade.plan.planbody.BeliefGoalPlanBody;
 import mas.capabilities.ApplicationCapability;
 import static mas.capabilities.ApplicationCapability.BELIEF_EMPTY_DATA;
-import mas.data.ApplicationData;
+import mas.data.ApplicationDataSet;
 
 /**
  *
@@ -24,7 +24,7 @@ import mas.data.ApplicationData;
  */
 public class ApplicationForwardRequestPlanBody extends BeliefGoalPlanBody {
     
-    private ApplicationData target;
+    private ApplicationDataSet target;
     
     
     @Override
@@ -43,8 +43,8 @@ public class ApplicationForwardRequestPlanBody extends BeliefGoalPlanBody {
     }
     
     @Parameter(direction = Parameter.Direction.IN, mandatory = true)
-    public void setApplicationData(ApplicationData applicationData) {        
-        target = new ApplicationData();
+    public void setApplicationDataSet(ApplicationDataSet applicationData) {        
+        target = new ApplicationDataSet();
         target.setData(applicationData.getData());
     }
     

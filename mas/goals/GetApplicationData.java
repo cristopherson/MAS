@@ -11,7 +11,7 @@ import bdi4jade.annotation.Parameter;
 import bdi4jade.annotation.Parameter.Direction;
 import bdi4jade.goal.Goal;
 import mas.capabilities.ApplicationCapability;
-import mas.data.ApplicationData;
+import mas.data.ApplicationDataSet;
 
 /**
  *
@@ -20,14 +20,14 @@ import mas.data.ApplicationData;
 @GoalOwner(capability = ApplicationCapability.class, internal = true)
 public class GetApplicationData implements Goal{
     
-    private ApplicationData data;
+    private ApplicationDataSet data;
     
-    public GetApplicationData(ApplicationData data) {
+    public GetApplicationData(ApplicationDataSet data) {
         this.data = data;
     }
     
     @Parameter(direction = Direction.IN)
-    public ApplicationData getApplicationData() {
+    public ApplicationDataSet getApplicationData() {
         return this.data;
     }
 }

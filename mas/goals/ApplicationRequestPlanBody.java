@@ -13,7 +13,7 @@ import bdi4jade.plan.Plan.EndState;
 import bdi4jade.plan.planbody.AbstractPlanBody;
 import java.util.HashMap;
 import mas.capabilities.ApplicationCapability;
-import mas.data.ApplicationData;
+import mas.data.ApplicationDataSet;
 
 /**
  *
@@ -22,29 +22,29 @@ import mas.data.ApplicationData;
 public class ApplicationRequestPlanBody extends AbstractPlanBody {
 
     @Belief(name = ApplicationCapability.BELIEF_EMPTY_DATA)
-    private BeliefSet<String, ApplicationData> emptyData;
+    private BeliefSet<String, ApplicationDataSet> emptyData;
     @Belief(name = ApplicationCapability.BELIEF_GET_DATA)
-    private BeliefSet<String, ApplicationData> getData;
-    private ApplicationData applicationData;
+    private BeliefSet<String, ApplicationDataSet> getData;
+    private ApplicationDataSet applicationDataSet;
 
     @Override
     public void action() {
         //Wait for communication from communication agent
-        applicationData = new ApplicationData();        
+        applicationDataSet = new ApplicationDataSet();        
         HashMap map = new HashMap<String, String>();
-        ApplicationData applicationData = new ApplicationData();        
+        ApplicationDataSet applicationDataSet = new ApplicationDataSet();
         map.put("key", "name");
-        applicationData.setData(map);
+        applicationDataSet.setData(map);
         System.out.println(ApplicationRequestPlanBody.class);
-        emptyData.addValue(applicationData);
-        if (applicationData != null && applicationData.getData()!=null) {
+        emptyData.addValue(applicationDataSet);
+        if (applicationDataSet != null && applicationDataSet.getData()!=null) {
             setEndState(EndState.SUCCESSFUL);
         }
     }
 
     @Parameter(direction = Direction.IN, mandatory = true)
-    public void setApplicationData(ApplicationData applicationData) {
-        this.applicationData = applicationData;
+    public void ApplicationDataSet(ApplicationDataSet applicationDataSet) {
+        this.applicationDataSet = applicationDataSet;
     }
     
 }
