@@ -24,32 +24,32 @@ import mas.plan.ForwardRequestPlan;
  *
  * @author cristopherson
  */
-public class ApplicationCapability extends Capability {
+public class FilterCapability extends Capability {
 
-    public static final String BELIEF_EMPTY_DATA = "empty_data";
-    public static final String BELIEF_GET_DATA = "get_data";
+    public static final String RECEIVE_EVENT = "receive_event";
+    public static final String RECEIVE_REQUEST = "receive_request";
 
     @Plan
-    private bdi4jade.plan.Plan forwardRequest = new DefaultPlan(
-            GoalTemplateFactory.hasBeliefValueOfType(BELIEF_EMPTY_DATA, ApplicationDataSet.class),
+    private bdi4jade.plan.Plan receiveEvent = new DefaultPlan(
+            GoalTemplateFactory.hasBeliefValueOfType(RECEIVE_EVENT, ApplicationDataSet.class),
             ApplicationForwardRequestPlanBody.class);
 
     @Plan
-    private bdi4jade.plan.Plan achieveGetData = new DefaultPlan(
-            GoalTemplateFactory.hasBeliefValueOfType(BELIEF_GET_DATA, ApplicationDataSet.class),
+    private bdi4jade.plan.Plan receiveRequest = new DefaultPlan(
+            GoalTemplateFactory.hasBeliefValueOfType(RECEIVE_REQUEST, ApplicationDataSet.class),
             ApplicationGetDataPlanBody.class);
 
     @Belief
     private BeliefSet<String, ApplicationDataSet> empty = new TransientBeliefSet<>(
-            BELIEF_EMPTY_DATA);
+            RECEIVE_EVENT);
 
     @Belief
-    private BeliefSet<String, ApplicationDataSet> noEmpty = new TransientBeliefSet<>(BELIEF_GET_DATA);
+    private BeliefSet<String, ApplicationDataSet> noEmpty = new TransientBeliefSet<>(RECEIVE_REQUEST);
 
     @Plan
     private bdi4jade.plan.Plan requestData;
     
-    public ApplicationCapability(){
+    public FilterCapability(){
         this.requestData = new ForwardRequestPlan(GetApplicationData.class, ApplicationRequestPlanBody.class);                
     }
     

@@ -20,14 +20,14 @@ import mas.data.ApplicationDataSet;
 @GoalOwner(capability = ApplicationCapability.class, internal = true)
 public class GetApplicationData implements Goal{
     
-    private ApplicationDataSet data;
+    private ApplicationDataSet applicationDataSet;
     
-    public GetApplicationData(ApplicationDataSet data) {
-        this.data = data;
+    public GetApplicationData(ApplicationDataSet applicationDataSet) {
+        this.applicationDataSet = applicationDataSet;
     }
     
     @Parameter(direction = Direction.IN)
     public ApplicationDataSet getApplicationData() {
-        return this.data;
+        return this.applicationDataSet;
     }
 }

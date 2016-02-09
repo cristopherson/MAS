@@ -5,17 +5,11 @@
  */
 package mas.goals;
 
-import bdi4jade.annotation.Belief;
 import bdi4jade.annotation.Parameter;
-import bdi4jade.belief.BeliefSet;
-import bdi4jade.belief.TransientBeliefSet;
 import bdi4jade.event.GoalEvent;
 import bdi4jade.goal.GoalStatus;
 import bdi4jade.plan.Plan.EndState;
-import bdi4jade.plan.planbody.AbstractPlanBody;
 import bdi4jade.plan.planbody.BeliefGoalPlanBody;
-import mas.capabilities.ApplicationCapability;
-import static mas.capabilities.ApplicationCapability.BELIEF_EMPTY_DATA;
 import mas.data.ApplicationDataSet;
 
 /**

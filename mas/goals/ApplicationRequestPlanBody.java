@@ -43,8 +43,14 @@ public class ApplicationRequestPlanBody extends AbstractPlanBody {
     }
 
     @Parameter(direction = Direction.IN, mandatory = true)
-    public void ApplicationDataSet(ApplicationDataSet applicationDataSet) {
+    public void setApplicationDataSet(ApplicationDataSet applicationDataSet) {
+        this.applicationDataSet = new ApplicationDataSet();
         this.applicationDataSet = applicationDataSet;
+    }
+    
+    @Parameter(direction = Direction.OUT, mandatory = true)
+    public ApplicationDataSet getApplicationDataSet() {
+        return this.applicationDataSet;
     }
     
 }

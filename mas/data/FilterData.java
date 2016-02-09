@@ -13,7 +13,7 @@ import java.util.Set;
  *
  * @author cristopherson
  */
-public class ApplicationData implements Data {
+public class FilterData implements Data {
 
     private Map<String, Object> applicationData;
 
@@ -29,8 +29,8 @@ public class ApplicationData implements Data {
 
     @Override
     public boolean equals(Object obj) {
-        if (obj instanceof ApplicationData) {
-            ApplicationData other = (ApplicationData) obj;
+        if (obj instanceof FilterData) {
+            FilterData other = (FilterData) obj;
             Set keys = ((Map) this.getData()).keySet();
 
             for (Object key : keys) {

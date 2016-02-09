@@ -24,7 +24,7 @@ import mas.plan.ForwardRequestPlan;
  *
  * @author cristopherson
  */
-public class ApplicationCapability extends Capability {
+public class CommunicationCapability extends Capability {
 
     public static final String BELIEF_EMPTY_DATA = "empty_data";
     public static final String BELIEF_GET_DATA = "get_data";
@@ -49,7 +49,7 @@ public class ApplicationCapability extends Capability {
     @Plan
     private bdi4jade.plan.Plan requestData;
     
-    public ApplicationCapability(){
+    public CommunicationCapability(){
         this.requestData = new ForwardRequestPlan(GetApplicationData.class, ApplicationRequestPlanBody.class);                
     }
     
