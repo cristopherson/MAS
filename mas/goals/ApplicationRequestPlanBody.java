@@ -32,10 +32,11 @@ public class ApplicationRequestPlanBody extends AbstractPlanBody {
         //Wait for communication from communication agent
         applicationData = new ApplicationData();        
         HashMap map = new HashMap<String, String>();
-        
+        ApplicationData applicationData = new ApplicationData();        
         map.put("key", "name");
         applicationData.setData(map);
         System.out.println(ApplicationRequestPlanBody.class);
+        emptyData.addValue(applicationData);
         if (applicationData != null && applicationData.getData()!=null) {
             setEndState(EndState.SUCCESSFUL);
         }

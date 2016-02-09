@@ -50,15 +50,17 @@ public class ApplicationCapability extends Capability {
     private bdi4jade.plan.Plan requestData;
     
     public ApplicationCapability(){
-        this.requestData = new ForwardRequestPlan(GetApplicationData.class, ApplicationForwardRequestPlanBody.class);
+        this.requestData = new ForwardRequestPlan(GetApplicationData.class, ApplicationRequestPlanBody.class);                
     }
     
     protected void setup() {
         //Communicate with communication agents   
+        System.out.println("Setup for = " + this.getClass());
         ApplicationData data = new ApplicationData();
         HashMap map = new HashMap<String, String>();
         map.put("key", "name");
         data.setData(map);
-        empty.addValue(data);
+        empty.addValue(data);        
+
     }
 }

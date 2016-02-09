@@ -8,39 +8,44 @@ package mas.goals;
 import bdi4jade.annotation.Belief;
 import bdi4jade.annotation.Parameter;
 import bdi4jade.belief.BeliefSet;
+import bdi4jade.belief.TransientBeliefSet;
+import bdi4jade.event.GoalEvent;
+import bdi4jade.goal.GoalStatus;
+import bdi4jade.plan.Plan.EndState;
 import bdi4jade.plan.planbody.AbstractPlanBody;
 import bdi4jade.plan.planbody.BeliefGoalPlanBody;
 import mas.capabilities.ApplicationCapability;
+import static mas.capabilities.ApplicationCapability.BELIEF_EMPTY_DATA;
 import mas.data.ApplicationData;
 
 /**
  *
  * @author cristopherson
  */
-public class ApplicationForwardRequestPlanBody extends AbstractPlanBody {
-
+public class ApplicationForwardRequestPlanBody extends BeliefGoalPlanBody {
+    
     private ApplicationData target;
-    @Belief(name = ApplicationCapability.BELIEF_EMPTY_DATA)
-    private BeliefSet<String, ApplicationData> emptyData;
-    @Belief(name = ApplicationCapability.BELIEF_GET_DATA)
-    private BeliefSet<String, ApplicationData> getData;
-    private ApplicationData applicationData;
-
+    
+    
     @Override
-    public void action() {
-        //Should communicate with communication agent
+    public void execute() {
+        GoalEvent goalEvent = getGoalEvent();
         System.out.println(ApplicationForwardRequestPlanBody.class);
-        target = new ApplicationData();
-        return;
+        if (goalEvent == null) {
+            return;
+        } else if (!GoalStatus.ACHIEVED.equals(goalEvent.getStatus())) {
+            setEndState(EndState.FAILED);
+            return;
+        }
+        //System.out.println("BeliefBase " + getBeliefBase().getBeliefs());
+        //setEndState(EndState.SUCCESSFUL);
+        //return;
     }
-
+    
     @Parameter(direction = Parameter.Direction.IN, mandatory = true)
-    public void setApplicationData(ApplicationData obj) {        
-        target = obj;
+    public void setApplicationData(ApplicationData applicationData) {        
+        target = new ApplicationData();
+        target.setData(applicationData.getData());
     }
-
-    @Parameter(direction = Parameter.Direction.OUT, mandatory = true)
-    public ApplicationData getApplicationData() {
-        return (ApplicationData)target.getData();
-    }
+    
 }
