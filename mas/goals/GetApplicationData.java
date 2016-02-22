@@ -27,7 +27,7 @@ public class GetApplicationData implements Goal{
     }
     
     @Parameter(direction = Direction.IN)
-    public ApplicationDataSet getApplicationData() {
+    public ApplicationDataSet getApplicationDataSet() {
         return this.applicationDataSet;
     }
 }
